@@ -7,6 +7,7 @@ import at.livekit.api.economy.IEconomyAdapter;
 import at.livekit.api.map.POI;
 import at.livekit.api.map.PlayerInfoProvider;
 import at.livekit.api.map.PlayerLocationProvider;
+import at.livekit.api.pm.MessagingAdapter;
 import at.livekit.api.map.POILocationProvider;
 
 /**
@@ -37,18 +38,6 @@ public interface ILiveKit {
      * @param provider A LocationProvider
      */
     void removePlayerLocationProvider(PlayerLocationProvider provider);
-
-    /**
-     * Add a publicly displayed point of interest to the map
-     * @param poi waypoint to be displayed
-     */
-    //void addPointOfInterest(POI poi);
-
-    /**
-     * Remove a point of interest
-     * @param poi waypoint to be removed
-     */
-    //void removePointOfIntereset(POI poi);
 
     /**
      * Notifies clients who are looking at player of a data change. Clients will refresh players data
@@ -91,4 +80,10 @@ public interface ILiveKit {
      * @param provider WorldLocationProvider whos data changed (locations)
      */
     void notifyPOIChange(POILocationProvider provider);
+
+    /**
+     * Set a custom Messaging adapter used to handle private messages from ingame to LiveKit App clients
+     * @param adapter Messaging Adapter implementation
+     */
+    void setMessagingAdapter(MessagingAdapter adapter);
 }

@@ -58,7 +58,7 @@ public class LKLocation {
     }
 
     public Location toLocation() {
-        return new Location(Bukkit.getWorld(world), blockX, blockX, blockZ);
+        return new Location(Bukkit.getWorld(world), blockX, blockY, blockZ);
     }
 
     public static LKLocation fromLocation(Location location) {
