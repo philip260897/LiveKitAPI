@@ -5,18 +5,15 @@ import java.util.List;
 import org.bukkit.OfflinePlayer;
 
 import at.livekit.api.core.IIdentity;
-import at.livekit.api.map.InfoEntry;
+import at.livekit.api.map.PersonalPin;
 
-/**
- * Interface for providing custom Info entries for a specific Player.
- */
-public interface IPlayerInfoProvider {
+public interface IPlayerLocationProvider {
     /**
      * Gets called whenever someone extends the player bottom sheet in the LiveKit App.
      * @param identity The identity (Identified player) in the app viewing the current @param player
      * @param player The player being viewed
      * 
-     * @return List of Info entries for the @param player
+     * @return List of waypoints for the @param player
      */
-    List<InfoEntry> onResolvePlayerInfo(IIdentity identity, OfflinePlayer player);
+    List<PersonalPin> onResolvePlayerLocation(IIdentity identity, OfflinePlayer player);
 }

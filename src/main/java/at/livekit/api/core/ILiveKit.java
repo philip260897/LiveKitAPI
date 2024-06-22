@@ -5,8 +5,9 @@ import org.bukkit.OfflinePlayer;
 import at.livekit.api.chat.ChatMessage;
 import at.livekit.api.economy.IEconomyAdapter;
 import at.livekit.api.map.POI;
-import at.livekit.api.map.POIInfoProvider;
 import at.livekit.api.map.PlayerInfoProvider;
+import at.livekit.api.map.PlayerLocationProvider;
+import at.livekit.api.map.POILocationProvider;
 
 /**
  * Provides acces to LiveKit API.
@@ -26,29 +27,28 @@ public interface ILiveKit {
     void removePlayerInfoProvider(PlayerInfoProvider provider);
 
     /**
-     * Registers a POIInfoProvider. InfoProviders are used to extends info for a certain POIs.
-     * @param provider A InfoProvider
+     * Registers a PlayerLocationProvider. LocationProviders are used to provide waypoints (POIs) for a certain Player.
+     * @param provider A LocationProvider
      */
-    void addPOIInfoProvider(POIInfoProvider provider);
+    void addPlayerLocationProvider(PlayerLocationProvider provider);
 
     /**
-     * Removes a InfoProvider.
-     * @param provider A InfoProvider
+     * Removes a LocationProvider.
+     * @param provider A LocationProvider
      */
-    void removePOIInfoProvider(POIInfoProvider provider);
-
+    void removePlayerLocationProvider(PlayerLocationProvider provider);
 
     /**
      * Add a publicly displayed point of interest to the map
      * @param poi waypoint to be displayed
      */
-    void addPointOfInterest(POI poi);
+    //void addPointOfInterest(POI poi);
 
     /**
      * Remove a point of interest
      * @param poi waypoint to be removed
      */
-    void removePointOfIntereset(POI poi);
+    //void removePointOfIntereset(POI poi);
 
     /**
      * Notifies clients who are looking at player of a data change. Clients will refresh players data
@@ -73,4 +73,22 @@ public interface ILiveKit {
      * @param message Message
      */
     void sendChatMessage(ChatMessage message);
+
+    /**
+     * Registers a WorldLocationProvider. LocationProviders are used to provide waypoints (POIs) for a certain World.
+     * @param provider A LocationProvider
+     */
+    void addPOILocationProvider(POILocationProvider provider);
+
+    /**
+     * Removes a LocationProvider.
+     * @param provider A LocationProvider
+     */
+    void removePOILocationProvider(POILocationProvider provider);
+
+    /**
+     * Notifies clients who of data change for this particular @param provider. Clients will refresh data
+     * @param provider WorldLocationProvider whos data changed (locations)
+     */
+    void notifyPOIChange(POILocationProvider provider);
 }
