@@ -11,6 +11,9 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "livekit_messages")
 public class PrivateMessage {
     
+    @DatabaseField(generatedId = true)
+    private int id;
+
     @DatabaseField(index = true, indexName = "sender_receiver")
     private UUID sender;
 
